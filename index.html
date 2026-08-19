@@ -1,0 +1,421 @@
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Baccarat Club · digital ecosystem</title>
+  <style>
+    /* ===== RESET & GLOBAL ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #0d0f14;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      padding: 28px 20px 40px;
+      line-height: 1.5;
+      color: #eef2f6;
+    }
+
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      background: #13181e;
+      border-radius: 40px;
+      padding: 36px 28px 44px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 215, 140, 0.08);
+    }
+
+    /* ===== GRADIENT HEADLINE ===== */
+    .gradient-title {
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #f6d68e 0%, #f3b37b 45%, #c77d5e 80%, #b1654a 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 4px 20px rgba(198, 120, 70, 0.25);
+      word-break: break-word;
+    }
+
+    .sub-glow {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #b7c3cd;
+      border-left: 3px solid #e5b47c;
+      padding-left: 16px;
+      margin-top: -4px;
+      margin-bottom: 28px;
+      background: linear-gradient(90deg, rgba(229, 180, 124, 0.08), transparent);
+    }
+
+    /* ===== CARDS ===== */
+    .card-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin: 28px 0 32px;
+    }
+
+    .card {
+      background: #1d242c;
+      border-radius: 28px;
+      padding: 22px 24px;
+      border: 1px solid #2d363f;
+      transition: all 0.25s ease;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      cursor: default;
+    }
+
+    .card:hover {
+      transform: translateY(-6px) scale(1.01);
+      border-color: #dba87a;
+      background: #232b35;
+      box-shadow: 0 16px 28px -8px rgba(0, 0, 0, 0.7), 0 0 0 1px #dba87a55;
+    }
+
+    .card-title {
+      font-weight: 600;
+      font-size: 1.3rem;
+      color: #f2dac2;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-title span {
+      background: #dba87a20;
+      padding: 0 10px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      color: #dba87a;
+      letter-spacing: 0.3px;
+    }
+
+    .card p {
+      color: #c9d4df;
+      font-size: 0.98rem;
+      margin-bottom: 8px;
+    }
+
+    .card ul {
+      list-style: none;
+      margin-top: 6px;
+    }
+
+    .card ul li {
+      position: relative;
+      padding-left: 24px;
+      margin-bottom: 6px;
+      color: #d2dee9;
+      font-size: 0.95rem;
+    }
+
+    .card ul li::before {
+      content: "◆";
+      position: absolute;
+      left: 0;
+      color: #dba87a;
+      font-size: 0.7rem;
+      top: 2px;
+    }
+
+    .badge-accent {
+      background: #2d363f;
+      padding: 2px 12px;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: #e2c7aa;
+      letter-spacing: 0.3px;
+    }
+
+    /* ===== CASE BLOCKS (выделенные блоки) ===== */
+    .case-block {
+      background: #10171e;
+      border-radius: 28px;
+      padding: 20px 24px;
+      margin: 28px 0 24px;
+      border-left: 6px solid #dba87a;
+      border: 1px solid #2d363f;
+      border-left-width: 6px;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.5);
+    }
+
+    .case-block strong {
+      color: #f0d5b6;
+      font-weight: 600;
+      display: block;
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+
+    .case-block p {
+      color: #c9d4df;
+      font-size: 0.96rem;
+    }
+
+    /* ===== TAGS / сетка инструментов ===== */
+    .tag-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 10px;
+      margin: 24px 0 18px;
+    }
+
+    .tag {
+      background: #1d242c;
+      padding: 10px 20px;
+      border-radius: 80px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #d4dce6;
+      border: 1px solid #2d363f;
+      transition: 0.2s;
+      letter-spacing: 0.2px;
+      backdrop-filter: blur(2px);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+
+    .tag:hover {
+      background: #dba87a;
+      color: #13181e;
+      border-color: #dba87a;
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px -6px #dba87a40;
+    }
+
+    .tag i {
+      font-style: normal;
+      margin-right: 4px;
+    }
+
+    /* ===== кнопка / контакт ===== */
+    .contact-block {
+      background: #1d242c;
+      border-radius: 40px;
+      padding: 18px 24px;
+      margin-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid #2d363f;
+    }
+
+    .contact-block .tele {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #e8dccc;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    .contact-block .tele a {
+      color: #dba87a;
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1px dashed #dba87a55;
+    }
+
+    .btn-glow {
+      background: linear-gradient(145deg, #dba87a, #b77f5a);
+      border: none;
+      color: #0d0f14;
+      font-weight: 600;
+      padding: 12px 28px;
+      border-radius: 60px;
+      font-size: 0.95rem;
+      cursor: default;
+      box-shadow: 0 6px 14px rgba(219, 168, 122, 0.25);
+      transition: 0.2s;
+      letter-spacing: 0.3px;
+    }
+
+    .btn-glow:hover {
+      transform: scale(1.02);
+      background: #e5b47c;
+      box-shadow: 0 8px 20px #dba87a55;
+    }
+
+    /* ===== DISCLAIMER (мелкий текст) ===== */
+    .disclaimer {
+      margin-top: 34px;
+      border-top: 1px solid #2a333d;
+      padding-top: 24px;
+      font-size: 0.7rem;
+      color: #7b8a9a;
+      line-height: 1.6;
+      letter-spacing: 0.2px;
+    }
+
+    .disclaimer strong {
+      color: #a7b8c9;
+      font-weight: 500;
+    }
+
+    .disclaimer p {
+      margin-bottom: 8px;
+    }
+
+    hr {
+      border: none;
+      height: 1px;
+      background: linear-gradient(90deg, #2a333d, #dba87a40, #2a333d);
+      margin: 18px 0;
+    }
+
+    /* ===== АДАПТИВ ===== */
+    @media (max-width: 600px) {
+      body {
+        padding: 12px 12px 20px;
+      }
+      .container {
+        padding: 24px 16px 30px;
+        border-radius: 28px;
+      }
+      .gradient-title {
+        font-size: 1.9rem;
+      }
+      .card {
+        padding: 18px 16px;
+      }
+      .card-title {
+        font-size: 1.1rem;
+        flex-wrap: wrap;
+      }
+      .contact-block {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+      }
+      .btn-glow {
+        text-align: center;
+        padding: 14px 10px;
+      }
+      .tag-grid {
+        gap: 8px;
+      }
+      .tag {
+        padding: 8px 14px;
+        font-size: 0.75rem;
+      }
+      .case-block {
+        padding: 16px 16px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .gradient-title {
+        font-size: 1.6rem;
+      }
+      .sub-glow {
+        font-size: 0.85rem;
+        padding-left: 12px;
+      }
+      .card ul li {
+        font-size: 0.85rem;
+      }
+    }
+
+    /* для почтовых клиентов — запасные inline-стили дублируются в атрибутах, 
+       но здесь сохраняем базовую адаптивность */
+  </style>
+</head>
+<body>
+  <div class="container" style="max-width:780px; margin:0 auto; background:#13181e; border-radius:40px; padding:36px 28px 44px; box-shadow:0 20px 40px rgba(0,0,0,0.7);">
+
+    <!-- ЗАГОЛОВОК градиентный -->
+    <h1 class="gradient-title" style="font-size:2.4rem; font-weight:700; background:linear-gradient(135deg,#f6d68e,#f3b37b 45%,#c77d5e 80%,#b1654a); -webkit-background-clip:text; background-clip:text; color:transparent; text-shadow:0 4px 20px rgba(198,120,70,0.25);">
+      BACCARAT <br style="display:none;">CLUB
+    </h1>
+    <div class="sub-glow" style="font-size:1rem; color:#b7c3cd; border-left:3px solid #e5b47c; padding-left:16px; margin-bottom:28px; background:linear-gradient(90deg,rgba(229,180,124,0.08),transparent);">
+      финансовый дизайн · цифровой экосистема
+    </div>
+
+    <!-- КАРТОЧКИ навыков с анимацией hover -->
+    <div class="card-grid">
+      <div class="card" style="background:#1d242c; border-radius:28px; padding:22px 24px; border:1px solid #2d363f; transition:all 0.25s;">
+        <div class="card-title" style="font-weight:600; font-size:1.3rem; color:#f2dac2; display:flex; gap:8px; align-items:center;">
+          🎯 Профессиональные игроки <span style="background:#dba87a20; padding:0 10px; border-radius:40px; font-size:0.8rem; color:#dba87a;">vetted</span>
+        </div>
+        <p style="color:#c9d4df; font-size:0.98rem;">Команда управляет игрой ежедневно — вам не нужно играть или следить за экраном.</p>
+        <ul style="list-style:none; margin-top:8px;">
+          <li style="position:relative; padding-left:24px; color:#d2dee9; font-size:0.95rem;">Ежедневная активность, ежемесячные результаты</li>
+          <li style="position:relative; padding-left:24px; color:#d2dee9; font-size:0.95rem;">Членство, а не спекуляция</li>
+        </ul>
+      </div>
+
+      <div class="card" style="background:#1d242c; border-radius:28px; padding:22px 24px; border:1px solid #2d363f; transition:all 0.25s;">
+        <div class="card-title" style="font-weight:600; font-size:1.3rem; color:#f2dac2; display:flex; gap:8px; align-items:center;">
+          💳 BE22-Card <span style="background:#dba87a20; padding:0 10px; border-radius:40px; font-size:0.8rem; color:#dba87a;">crypto</span>
+        </div>
+        <p style="color:#c9d4df; font-size:0.98rem;">Официальная крипто-карта Baccarat Entertainment.</p>
+        <ul style="list-style:none; margin-top:6px;">
+          <li style="position:relative; padding-left:24px; color:#d2dee9; font-size:0.95rem;">Платежи везде, где принимают Visa</li>
+          <li style="position:relative; padding-left:24px; color:#d2dee9; font-size:0.95rem;">Пополнение криптовалютой, мобильное приложение</li>
+        </ul>
+      </div>
+
+      <div class="card" style="background:#1d242c; border-radius:28px; padding:22px 24px; border:1px solid #2d363f; transition:all 0.25s;">
+        <div class="card-title" style="font-weight:600; font-size:1.3rem; color:#f2dac2; display:flex; gap:8px; align-items:center;">
+          📈 Доход от рефералов <span style="background:#dba87a20; padding:0 10px; border-radius:40px; font-size:0.8rem; color:#dba87a;">network</span>
+        </div>
+        <p style="color:#c9d4df; font-size:0.98rem;">Заработок на основе приглашённых участников при соблюдении условий.</p>
+        <ul style="list-style:none; margin-top:6px;">
+          <li style="position:relative; padding-left:24px; color:#d2dee9; font-size:0.95rem;">Долгосрочный взгляд от 12 месяцев</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ПРИМЕР КЕЙСА (выделенный блок) -->
+    <div class="case-block" style="background:#10171e; border-radius:28px; padding:20px 24px; margin:28px 0 24px; border-left:6px solid #dba87a; border:1px solid #2d363f; border-left-width:6px;">
+      <strong style="color:#f0d5b6; font-weight:600; display:block; font-size:1.1rem;">📌 Кейс: пассивный доход</strong>
+      <p style="color:#c9d4df; font-size:0.96rem;">Участник из ЕС, подключился в сентябре 2023. Среднемесячный доход от реферальной сети + доля прибыли. Не требует ежедневного контроля.</p>
+    </div>
+
+    <!-- СЕТКА ТЕГОВ (инструменты) -->
+    <div style="margin: 24px 0 18px;">
+      <div style="font-size:0.9rem; color:#b7c3cd; letter-spacing:0.5px; margin-bottom:12px; font-weight:500;">⚙️ ИНСТРУМЕНТЫ ЭКОСИСТЕМЫ</div>
+      <div class="tag-grid" style="display:flex; flex-wrap:wrap; gap:12px 10px;">
+        <span class="tag" style="background:#1d242c; padding:10px 20px; border-radius:80px; font-size:0.85rem; color:#d4dce6; border:1px solid #2d363f; transition:0.2s;">#Baccarat</span>
+        <span class="tag" style="background:#1d242c; padding:10px 20px; border-radius:80px; font-size:0.85rem; color:#d4dce6; border:1px solid #2d363f; transition:0.2s;">#BE22‑Card</span>
+        <span class="tag" style="background:#1d242c; padding:10px 20px; border-radius:80px; font-size:0.85rem; color:#d4dce6; border:1px solid #2d363f; transition:0.2s;">#Crypto</span>
+        <span class="tag" style="background:#1d242c; padding:10px 20px; border-radius:80px; font-size:0.85rem; color:#d4dce6; border:1px solid #2d363f; transition:0.2s;">#Visa</span>
+        <span class="tag" style="background:#1d242c; padding:10px 20px; border-radius:80px; font-size:0.85rem; color:#d4dce6; border:1px solid #2d363f; transition:0.2s;">#MobileApp</span>
+        <span class="tag" style="background:#1d242c; padding:10px 20px; border-radius:80px; font-size:0.85rem; color:#d4dce6; border:1px solid #2d363f; transition:0.2s;">#Referral</span>
+        <span class="tag" style="background:#1d242c; padding:10px 20px; border-radius:80px; font-size:0.85rem; color:#d4dce6; border:1px solid #2d363f; transition:0.2s;">#GlobalPay</span>
+      </div>
+    </div>
+
+    <!-- КОНТАКТ + КНОПКА -->
+    <div class="contact-block" style="background:#1d242c; border-radius:40px; padding:18px 24px; margin-top:28px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; border:1px solid #2d363f;">
+      <div class="tele" style="display:flex; align-items:center; gap:10px; color:#e8dccc; font-weight:500; font-size:1rem;">
+        <span>📱 Telegram</span>
+        <a href="#" style="color:#dba87a; text-decoration:none; font-weight:600; border-bottom:1px dashed #dba87a55;">@galina_pv</a>
+      </div>
+      <div class="btn-glow" style="background:linear-gradient(145deg,#dba87a,#b77f5a); border:none; color:#0d0f14; font-weight:600; padding:12px 28px; border-radius:60px; font-size:0.95rem; box-shadow:0 6px 14px rgba(219,168,122,0.25); cursor:default;">
+        Связаться →
+      </div>
+    </div>
+
+    <!-- DISCLAIMER -->
+    <div class="disclaimer" style="margin-top:34px; border-top:1px solid #2a333d; padding-top:24px; font-size:0.7rem; color:#7b8a9a; line-height:1.6;">
+      <p><strong style="color:#a7b8c9;">Дисклеймер:</strong> Это не инвестиционная, финансовая или юридическая консультация. Информация отражает личный опыт.</p>
+      <p><strong style="color:#a7b8c9;">Доход:</strong> Любые примеры дохода носят иллюстративный характер и не гарантируют будущих результатов. Прибыль и реферальный доход не гарантированы.</p>
+      <p><strong style="color:#a7b8c9;">Риск:</strong> Участие связано с предпринимательским и финансовым риском, включая возможную потерю всех внесённых средств. Участвуйте только средствами, которые готовы потерять.</p>
+      <p style="margin-top:6px; color:#5f7285;">Baccarat Entertainment · с мая 2022 · глобальная платформа</p>
+    </div>
+
+  </div>
+  <!-- адаптация для gmail: inline-стили продублированы в атрибутах, 
+       но для читаемости сохранён чистый html -->
+</body>
+</html>
